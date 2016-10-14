@@ -26,7 +26,7 @@ case "$1" in
 		else
 			echo "Database not initialized. Initializing database."
 
-			printf "Setting up:\nprocesses=$processes\nsessions=$sessions\ntransactions=$transactions\n"
+			printf "Setting up:\nprocesses=$processes\nsessions=$sessions\ntransactions=$transactions\nopen_cursors=$open_cursors\n"
 			echo "If you want to use different parameters set processes, sessions, transactions env variables and consider this formula:"
 			printf "processes=x\nsessions=x*1.1+5\ntransactions=sessions*1.1\n"
 
@@ -42,6 +42,9 @@ case "$1" in
 
 			sed -i -E "s/transactions=[^)]+/transactions=$transactions/g" /u01/app/oracle/product/11.2.0/xe/config/scripts/init.ora
 			sed -i -E "s/transactions=[^)]+/transactions=$transactions/g" /u01/app/oracle/product/11.2.0/xe/config/scripts/initXETemp.ora
+
+			sed -i -E "s/open_cursors=[^)]+/open_cursors=$open_cursors/g" /u01/app/oracle/product/11.2.0/xe/config/scripts/init.ora
+			sed -i -E "s/open_cursors=[^)]+/open_cursors=$open_cursors/g" /u01/app/oracle/product/11.2.0/xe/config/scripts/initXETemp.ora
 
 			printf 8080\\n1521\\noracle\\noracle\\ny\\n | /etc/init.d/oracle-xe configure
 

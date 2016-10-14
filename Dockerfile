@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER Maksym Bilenko <sath891@gmail.com>
+MAINTAINER Peter Murray <peter.murray@gmail.com>
 
 # get rid of the message: "debconf: unable to initialize frontend: Dialog"
 ENV DEBIAN_FRONTEND noninteractive
@@ -31,6 +31,7 @@ VOLUME ["/u01/app/oracle"]
 ENV processes 500
 ENV sessions 555
 ENV transactions 610
+ENV open_cursors 1025
 
 ADD entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
