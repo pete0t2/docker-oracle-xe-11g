@@ -23,19 +23,21 @@ downloadOracle () {
 
 	done
 
-	cat /${ORA_DEB}a* > /${ORA_DEB}
+	cat /${ORA_DEB}a* > /assets/${ORA_DEB}
 
 	rm -f /${ORA_DEB}a*
 
 }
 
-downloadOracle
+#downloadOracle
+cat /assets/${ORA_DEB}a* > /assets/${ORA_DEB}
+rm -f /assets/${ORA_DEB}a*
 
-dpkg --install /${ORA_DEB}
-rm -f /${ORA_DEB}
+dpkg --install /assets/${ORA_DEB}
+rm -f /assets/${ORA_DEB}
 
-mv /init.ora       /u01/app/oracle/product/11.2.0/xe/config/scripts
-mv /initXETemp.ora /u01/app/oracle/product/11.2.0/xe/config/scripts
+mv /assets/init.ora       /u01/app/oracle/product/11.2.0/xe/config/scripts
+mv /assets/initXETemp.ora /u01/app/oracle/product/11.2.0/xe/config/scripts
 
 mv /u01/app/oracle/product /u01/app/oracle-product
 
